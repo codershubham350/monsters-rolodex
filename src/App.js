@@ -20,10 +20,12 @@ class App extends Component {
       .then((users) => this.setState({ monsters: users }));
   }
 
-  handleChange = (e) => {
+  onSearchChange = (event) => {
     // Arrow function automatically bing this at the first place in the context of which it is defined.
     // Here this will point to the App component extending Component
-    this.setState({ searchField: e.target.value });
+    this.setState({
+      searchField: event.target.value,
+    });
   };
 
   render() {
@@ -35,7 +37,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Monster Rolodex </h1>
+        <h1>Monsters Rolodex</h1>
         <label
           style={{ fontWeight: "bold", marginRight: "10px", color: "#fff" }}
         >
@@ -44,9 +46,9 @@ class App extends Component {
 
         <SearchBox
           placeholder="Search your Monster"
-          handleChange={this.handleChange}
+          handleChange={this.onSearchChange}
         />
-        <CardList monsters={filteredMonsters}></CardList>
+        <CardList monsters={monsters}></CardList>
       </div>
     );
   }
